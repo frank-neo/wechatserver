@@ -7,97 +7,101 @@ server:
     max-threads: 200
 
 spring:
-  datasource:
-    type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: org.gjt.mm.mysql.Driver
-    url: jdbc:mysql://129.204.127.138:3306/zhongtai?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useOldAliasMetadataBehavior=true
-    username: root
-    password: 123456
-    dbcp2:
-      min-idle: 5                                           # 数据库连接池的最小维持连接数
-      initial-size: 5                                       # 初始化连接数
-      max-total: 5                                          # 最大连接数
-      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
-      test-while-idle: false
-      test-on-borrow: false
-      test-on-return: false
-      validation-query: SELECT 1
+  thymeleaf:
+    prefix: classpath:/templates/
 
-  rabbitmq:
-    host: 129.204.127.138
-    port: 5672
-    username: admin
-    password: admin
-    publisher-confirms: true
-    publisher-returns: true
-    template:
-      mandatory: true
-    listener:
-      simple:
-        acknowledge-mode: manual
-        concurrency: 1
-        max-concurrency: 5
-
-  data:
-    redis:
-      repositories:
-        enabled: false
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-
-  servlet:
-    multipart:
-      max-file-size: 10MB
-      max-request-size: 100MB
-
-  devtools:
-    livereload:
-      enabled: true #是否支持livereload
-      port: 35729
-    restart:
-      enabled: true #是否支持热部署
-
-  #redis缓存
-  redis:
-    #redis数据库索引，默认是0
-    database: 0
-    #redis服务器地址，这里用本地的redis
-    host: 129.204.127.138
-    # Redis服务器连接密码（默认为空）
-    password:
-    #redis服务器连接端口，默认是6379
-    port: 6379
-    # 连接超时时间（毫秒）
-    timeout: 1000
-    jedis:
-      pool:
-        # 连接池最大连接数（使用负值表示没有限制）
-        max-active: 8
-        # 连接池最大阻塞等待时间（使用负值表示没有限制
-        max-wait: -1
-        # 连接池中的最大空闲连接
-        max-idle: 8
-        # 连接池中的最小空闲连接
-        min-idle: 0
-
-project-params:
-  domain: 139.196.51.102:8080
-  ip: 139.196.51.102
-
-storage-params:
-  location: /var/www/html/image/
-  url: /image/
-
-
-logging:
-  file: ZhongTai.log
-
-wx-params:
-  id: wx7445fc4791a4148f
-  secret: fb8ee0294c9b82e681324ad318a8efc6
-  grant:  authorization_code
-  wechat_user_info_url: https://api.weixin.qq.com/cgi-bin/user/info
-  jsapiticket: JsApiTicket
+#spring:
+#  datasource:
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    driver-class-name: org.gjt.mm.mysql.Driver
+#    url: jdbc:mysql://129.204.127.138:3306/zhongtai?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useOldAliasMetadataBehavior=true
+#    username: root
+#    password: 123456
+#    dbcp2:
+#      min-idle: 5                                           # 数据库连接池的最小维持连接数
+#      initial-size: 5                                       # 初始化连接数
+#      max-total: 5                                          # 最大连接数
+#      max-wait-millis: 200                                  # 等待连接获取的最大超时时间
+#      test-while-idle: false
+#      test-on-borrow: false
+#      test-on-return: false
+#      validation-query: SELECT 1
+#
+#  rabbitmq:
+#    host: 129.204.127.138
+#    port: 5672
+#    username: admin
+#    password: admin
+#    publisher-confirms: true
+#    publisher-returns: true
+#    template:
+#      mandatory: true
+#    listener:
+#      simple:
+#        acknowledge-mode: manual
+#        concurrency: 1
+#        max-concurrency: 5
+#
+#  data:
+#    redis:
+#      repositories:
+#        enabled: false
+#
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#
+#  servlet:
+#    multipart:
+#      max-file-size: 10MB
+#      max-request-size: 100MB
+#
+#  devtools:
+#    livereload:
+#      enabled: true #是否支持livereload
+#      port: 35729
+#    restart:
+#      enabled: true #是否支持热部署
+#
+#  #redis缓存
+#  redis:
+#    #redis数据库索引，默认是0
+#    database: 0
+#    #redis服务器地址，这里用本地的redis
+#    host: 129.204.127.138
+#    # Redis服务器连接密码（默认为空）
+#    password:
+#    #redis服务器连接端口，默认是6379
+#    port: 6379
+#    # 连接超时时间（毫秒）
+#    timeout: 1000
+#    jedis:
+#      pool:
+#        # 连接池最大连接数（使用负值表示没有限制）
+#        max-active: 8
+#        # 连接池最大阻塞等待时间（使用负值表示没有限制
+#        max-wait: -1
+#        # 连接池中的最大空闲连接
+#        max-idle: 8
+#        # 连接池中的最小空闲连接
+#        min-idle: 0
+#
+#project-params:
+#  domain: 139.196.51.102:8080
+#  ip: 139.196.51.102
+#
+#storage-params:
+#  location: /var/www/html/image/
+#  url: /image/
+#
+#
+#logging:
+#  file: ZhongTai.log
+#
+#wx-params:
+#  id: wx7445fc4791a4148f
+#  secret: fb8ee0294c9b82e681324ad318a8efc6
+#  grant:  authorization_code
+#  wechat_user_info_url: https://api.weixin.qq.com/cgi-bin/user/info
+#  jsapiticket: JsApiTicket
